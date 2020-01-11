@@ -1,5 +1,6 @@
 package com.gym.appointments.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -33,6 +34,8 @@ public class TrainingSchedule implements Serializable {
 
     @NonNull
     @ManyToOne
+    @JoinColumn(name = "coach_id")
+    @JsonIgnore
     private Coach coach;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "trainingSchedule")
