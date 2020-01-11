@@ -1,23 +1,30 @@
 package com.gym.appointments.Model;
 
 import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
 @Getter
 @Setter
-public class Coach extends Person {
+@AllArgsConstructor
+@NoArgsConstructor
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public class Coach extends Person implements Serializable {
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "coach")
-    private List<TrainingSchedule> trainingScheduleList;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Integer id;
 
-    @Builder
-    public Coach(Integer id, String name, String firstSurname, String secondSurname, Sex sex, Integer age, Integer phone, List<TrainingSchedule> trainingScheduleList){
-       super(id, name, firstSurname, secondSurname, sex, age,phone);
-       this.trainingScheduleList = trainingScheduleList;
-    }
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, mappedBy = "coach")
+    @Fetch(FetchMode.SUBSELECT)
+    private Collection<TrainingSchedule> trainingScheduleList;
+
 
 
 

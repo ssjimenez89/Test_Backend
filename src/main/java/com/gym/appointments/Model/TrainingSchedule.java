@@ -1,15 +1,22 @@
 package com.gym.appointments.Model;
 
-import lombok.Data;
-import lombok.NonNull;
+import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-@Data
-public class TrainingSchedule {
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@RequiredArgsConstructor
+public class TrainingSchedule implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -28,7 +35,8 @@ public class TrainingSchedule {
     @ManyToOne
     private Coach coach;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "trainingSchedule")
-    private List<Appointment> appointmentList;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "trainingSchedule")
+    @Fetch(FetchMode.SUBSELECT)
+    private Collection<Appointment> appointmentList;
 
 }

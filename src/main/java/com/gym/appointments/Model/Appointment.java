@@ -1,14 +1,18 @@
 package com.gym.appointments.Model;
 
-import lombok.Data;
-import lombok.NonNull;
+import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Data
-public class Appointment {
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@RequiredArgsConstructor
+public class Appointment implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

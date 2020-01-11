@@ -3,25 +3,26 @@ package com.gym.appointments.Model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Getter
 @Setter
-public class Member extends Person {
+@AllArgsConstructor
+@NoArgsConstructor
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public class Member extends Person implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Integer id;
 
     @NonNull
     private Date registrationDate;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "member")
     private List<Appointment> appointmentList;
-
-    @Builder
-    public Member(Integer id, String name, String firstSurname, String secondSurname, Sex sex, Integer age, Integer phone, Date registrationDate, List<Appointment> appointmentList){
-        super(id, name, firstSurname, secondSurname, sex, age,phone);
-        this.registrationDate = registrationDate;
-        this.appointmentList = appointmentList;
-    }
 
 }
