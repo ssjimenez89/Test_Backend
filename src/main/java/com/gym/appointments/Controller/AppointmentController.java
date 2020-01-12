@@ -21,13 +21,25 @@ public class AppointmentController {
     }
 
     @GetMapping("/appointment/{id}")
-    public Appointment getAppointmentTypeById(@PathVariable(value = "id") Integer appointmentId){
+    public Appointment getAppointmentById(@PathVariable(value = "id") Integer appointmentId){
         return appointmentService.getAppointmentById(appointmentId);
     }
 
-    @PostMapping("member/{memberId}/appointmentType/{appointmentTypeId}/trainingSchedule/{trainingScheduleId}/appointment")
-    public Appointment createAppointmentType(@PathVariable(value = "memberId") Integer memberId, @PathVariable(value = "appointmentTypeId") Integer appointmentTypeId, @PathVariable(value = "trainingScheduleId") Integer trainingScheduleId,   @Valid @RequestBody Appointment appointment){
+    @PostMapping("member/{memberId}/appointmenttype/{appointmentTypeId}/trainingschedule/{trainingScheduleId}/appointment")
+    public Appointment createAppointment(@PathVariable(value = "memberId") Integer memberId, @PathVariable(value = "appointmentTypeId") Integer appointmentTypeId, @PathVariable(value = "trainingScheduleId") Integer trainingScheduleId,   @Valid @RequestBody Appointment appointment){
         return appointmentService.add(memberId, appointmentTypeId, trainingScheduleId, appointment);
     }
+
+    @PutMapping("member/{memberId}/appointmenttype/{appointmentTypeId}/trainingschedule/{trainingScheduleId}/appointment/{id}")
+    public Appointment editAppointment(@PathVariable(value = "memberId") Integer memberId, @PathVariable(value = "appointmentTypeId") Integer appointmentTypeId, @PathVariable(value = "trainingScheduleId") Integer trainingScheduleId, @PathVariable(value = "id") Integer appointmentId,   @Valid @RequestBody Appointment appointment){
+        return appointmentService.edit(memberId, appointmentTypeId, trainingScheduleId, appointmentId, appointment);
+    }
+
+    @DeleteMapping("/appointment/{id}")
+    public void deleteAppointment(@PathVariable(value = "id") Integer appointmentId){
+        appointmentService.delete(appointmentId);
+    }
+
+
 
 }

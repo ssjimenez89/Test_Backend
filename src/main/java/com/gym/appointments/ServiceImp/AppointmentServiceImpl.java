@@ -52,4 +52,25 @@ public class AppointmentServiceImpl implements AppointmentService {
 
         return appointmentRepository.save(appointment);
     }
+
+    @Override
+    public Appointment edit(Integer memberId, Integer appointmentTypeId, Integer trainingScheduleId, Integer appointmentId, Appointment appointmentNew) {
+        Member member = memberRepository.findById(memberId).get();
+        AppointmentType appointmentType = appointmentTypeRepository.findById(appointmentTypeId).get();
+        TrainingSchedule trainingSchedule = trainingScheduleRepository.findById(trainingScheduleId).get();
+        Appointment appointment = appointmentRepository.findById(appointmentId).get();
+
+        appointment.setName(appointmentNew.getName());
+        appointment.setMember(member);
+        appointment.setAppointmentType(appointmentType);
+        appointment.setTrainingSchedule(trainingSchedule);
+
+        return appointmentRepository.save(appointment);
+    }
+
+    @Override
+    public void delete(Integer appointmentId) {
+        appointmentRepository.deleteById(appointmentId);
+    }
+
 }
