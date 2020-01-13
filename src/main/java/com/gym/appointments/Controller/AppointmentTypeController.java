@@ -3,6 +3,7 @@ package com.gym.appointments.Controller;
 import com.gym.appointments.Model.AppointmentType;
 import com.gym.appointments.Service.AppointmentTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -26,6 +27,7 @@ public class AppointmentTypeController {
     }
 
     @PostMapping("/appointmenttype")
+    @ResponseStatus(HttpStatus.CREATED)
     public AppointmentType createAppointmentType(@Valid @RequestBody AppointmentType appointmentType){
         return appointmentTypeService.add(appointmentType);
     }
