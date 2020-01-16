@@ -27,4 +27,12 @@ public class AppointmentType implements Serializable {
     @NonNull
     private String description;
 
+    @Override
+    public String toString() {
+        return "AppointmentType{" +
+                "id=" + String.valueOf(id) +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

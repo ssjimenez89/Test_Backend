@@ -25,7 +25,10 @@ public class Coach extends Person implements Serializable {
     @Fetch(FetchMode.SUBSELECT)
     private Collection<TrainingSchedule> trainingScheduleList;
 
-
-
-
+    @Override
+    public String toString() {
+        return "Coach{" +
+                "id=" + String.valueOf(id) +
+                '}';
+    }
 }
