@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -21,6 +22,10 @@ public class Appointment implements Serializable {
 
     @NonNull
     private String name;
+
+    //Date of Realization of the Appointment
+    @NonNull
+    private LocalDate registrationDate = LocalDate.now();
 
     @NonNull
     @ManyToOne
@@ -40,5 +45,15 @@ public class Appointment implements Serializable {
     @JsonIgnore
     private Member member;
 
-
+    @Override
+    public String toString() {
+        return "Appointment{" +
+                "id=" + String.valueOf(id) +
+                ", name='" + name + '\'' +
+                ", registrationDate=" + registrationDate.toString() +
+                ", appointmentType=" + appointmentType +
+                ", trainingSchedule=" + trainingSchedule +
+                ", member=" + member +
+                '}';
+    }
 }

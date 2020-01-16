@@ -7,6 +7,7 @@ import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -29,6 +30,7 @@ public class TrainingSchedule implements Serializable {
     @NonNull
     private Date endTime;
 
+    //Date of the Training
     @NonNull
     private Date date;
 
@@ -42,4 +44,14 @@ public class TrainingSchedule implements Serializable {
     @Fetch(FetchMode.SUBSELECT)
     private Collection<Appointment> appointmentList;
 
+    @Override
+    public String toString() {
+        return "TrainingSchedule{" +
+                "id=" + String.valueOf(id) +
+                ", startTime=" + startTime.toString() +
+                ", endTime=" + endTime.toString() +
+                ", date=" + date.toString() +
+                ", coach=" + coach +
+                '}';
+    }
 }

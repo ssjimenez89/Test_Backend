@@ -27,6 +27,17 @@ public class Person {
     @NonNull
     private Integer phone;
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", firstSurname='" + firstSurname + '\'' +
+                ", secondSurname='" + secondSurname + '\'' +
+                ", sex=" + sex +
+                ", age=" + String.valueOf(age) +
+                ", phone=" + String.valueOf(phone) +
+                '}';
+    }
 }
 
 
