@@ -21,9 +21,9 @@ public class Coach extends Person implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, mappedBy = "coach")
+    /*@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, mappedBy = "coach")
     @Fetch(FetchMode.SUBSELECT)
-    private Collection<TrainingSchedule> trainingScheduleList;
+    private Collection<TrainingSchedule> trainingScheduleList;*/
 
     @Override
     public String toString() {

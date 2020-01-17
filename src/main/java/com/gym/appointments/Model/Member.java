@@ -24,8 +24,8 @@ public class Member extends Person implements Serializable {
     @NonNull
     private LocalDate registrationDate = LocalDate.now();
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "member")
-    private List<Appointment> appointmentList;
+    /*@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "member")
+    private List<Appointment> appointmentList;*/
 
     @Override
     public String toString() {
