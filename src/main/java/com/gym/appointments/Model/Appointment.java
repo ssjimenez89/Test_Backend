@@ -30,19 +30,19 @@ public class Appointment implements Serializable {
     @NonNull
     @ManyToOne
     @JoinColumn(name = "appointment_type_id")
-    @JsonIgnore
+   /* @JsonIgnore*/
     private AppointmentType appointmentType;
 
     @NonNull
     @ManyToOne
     @JoinColumn(name = "training_schedule_id")
-    @JsonIgnore
+    /*@JsonIgnore*/
     private TrainingSchedule trainingSchedule;
 
     @NonNull
     @ManyToOne
     @JoinColumn(name = "member_id")
-    @JsonIgnore
+    /*@JsonIgnore*/
     private Member member;
 
     @Override
@@ -52,7 +52,7 @@ public class Appointment implements Serializable {
                 ", name='" + name + '\'' +
                 ", registrationDate=" + registrationDate.toString() +
                 ", appointmentType=" + appointmentType +
-                ", trainingSchedule=" + trainingSchedule +
+                ", trainingSchedule=" + trainingSchedule.getDate() +
                 ", member=" + member +
                 '}';
     }

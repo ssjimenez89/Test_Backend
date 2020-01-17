@@ -37,12 +37,12 @@ public class TrainingSchedule implements Serializable {
     @NonNull
     @ManyToOne
     @JoinColumn(name = "coach_id")
-    @JsonIgnore
+    /*@JsonIgnore*/
     private Coach coach;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "trainingSchedule")
+    /*@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "trainingSchedule")
     @Fetch(FetchMode.SUBSELECT)
-    private Collection<Appointment> appointmentList;
+    private Collection<Appointment> appointmentList;*/
 
     @Override
     public String toString() {
