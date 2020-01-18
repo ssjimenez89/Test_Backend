@@ -12,6 +12,7 @@ import com.gym.appointments.Service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -49,6 +50,8 @@ public class AppointmentServiceImpl implements AppointmentService {
         appointment.setMember(member);
         appointment.setAppointmentType(appointmentType);
         appointment.setTrainingSchedule(trainingSchedule);
+        LocalDate ld = LocalDate.now();
+        appointment.setRegistrationDate(ld.toString());
 
         return appointmentRepository.save(appointment);
     }

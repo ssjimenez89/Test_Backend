@@ -14,7 +14,6 @@ public class CoachServiceImpl implements CoachService {
     @Autowired
     CoachRepository coachRepository;
 
-
     @Override
     public List<Coach> findAll() {
         return (List<Coach>) coachRepository.findAll();
