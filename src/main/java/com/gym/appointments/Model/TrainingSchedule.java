@@ -25,14 +25,14 @@ public class TrainingSchedule implements Serializable {
     private Integer id;
 
     @NonNull
-    private Date startTime;
+    private String startTime;
 
     @NonNull
-    private Date endTime;
+    private String endTime;
 
     //Date of the Training
     @NonNull
-    private Date date;
+    private String date;
 
     @NonNull
     @ManyToOne
@@ -48,9 +48,9 @@ public class TrainingSchedule implements Serializable {
     public String toString() {
         return "TrainingSchedule{" +
                 "id=" + String.valueOf(id) +
-                ", startTime=" + startTime.toString() +
-                ", endTime=" + endTime.toString() +
-                ", date=" + date.toString() +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", date=" + date +
                 ", coach=" + coach +
                 '}';
     }

@@ -6,6 +6,7 @@ import com.gym.appointments.Service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -26,6 +27,8 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public Member add(Member member) {
+        LocalDate ld = LocalDate.now();
+        member.setRegistrationDate(ld.toString());
         return memberRepository.save(member);
     }
 
@@ -38,7 +41,6 @@ public class MemberServiceImpl implements MemberService {
         member.setAge(memberNew.getAge());
         member.setSex(memberNew.getSex());
         member.setPhone(memberNew.getPhone());
-        member.setRegistrationDate(memberNew.getRegistrationDate());
         return memberRepository.save(member);
     }
 

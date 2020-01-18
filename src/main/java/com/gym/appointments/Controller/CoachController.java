@@ -3,6 +3,7 @@ package com.gym.appointments.Controller;
 import com.gym.appointments.Model.Coach;
 import com.gym.appointments.Service.CoachService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -26,6 +27,7 @@ public class CoachController {
     }
 
     @PostMapping("/coach")
+    @ResponseStatus(HttpStatus.CREATED)
     public Coach createCoach(@Valid @RequestBody Coach coach){
         return coachService.add(coach);
     }

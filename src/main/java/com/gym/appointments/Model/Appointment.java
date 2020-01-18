@@ -25,7 +25,7 @@ public class Appointment implements Serializable {
 
     //Date of Realization of the Appointment
     @NonNull
-    private LocalDate registrationDate = LocalDate.now();
+    private String registrationDate;
 
     @NonNull
     @ManyToOne
@@ -50,7 +50,7 @@ public class Appointment implements Serializable {
         return "Appointment{" +
                 "id=" + String.valueOf(id) +
                 ", name='" + name + '\'' +
-                ", registrationDate=" + registrationDate.toString() +
+                ", registrationDate=" + registrationDate +
                 ", appointmentType=" + appointmentType +
                 ", trainingSchedule=" + trainingSchedule.getDate() +
                 ", member=" + member +
