@@ -4,6 +4,7 @@ import com.gym.appointments.Model.Member;
 import com.gym.appointments.Repository.MemberRepository;
 import com.gym.appointments.Service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -27,6 +28,7 @@ public class MemberController {
     }
 
     @PostMapping("/member")
+    @ResponseStatus(HttpStatus.CREATED)
     public Member createMember(@Valid @RequestBody Member member){
         return memberService.add(member);
     }

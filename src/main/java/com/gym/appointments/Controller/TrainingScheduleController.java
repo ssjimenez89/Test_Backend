@@ -3,6 +3,7 @@ package com.gym.appointments.Controller;
 import com.gym.appointments.Model.TrainingSchedule;
 import com.gym.appointments.Service.TrainingScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -25,12 +26,13 @@ public class TrainingScheduleController {
         return trainingScheduleService.getTrainingScheduleById(trainingScheduleId);
     }
 
-    @PostMapping("/coach/{coachId}/trainingschedule")
+    @PostMapping("/trainingschedule/{coachId}")
+    @ResponseStatus(HttpStatus.CREATED)
     public TrainingSchedule createTrainingSchedule(@PathVariable (value = "coachId") Integer coachId, @Valid @RequestBody TrainingSchedule trainingSchedule){
         return trainingScheduleService.add(coachId, trainingSchedule);
     }
 
-    @PutMapping("/coach/{coachId}/trainingschedule/{id}")
+    @PutMapping("/trainingschedule/{coachId}/{id}")
     public TrainingSchedule editTrainingSchedule(@PathVariable (value = "coachId") Integer coachId, @PathVariable(value = "id") Integer trainingScheduleId, @Valid @RequestBody TrainingSchedule trainingSchedule){
         return trainingScheduleService.edit(coachId, trainingScheduleId, trainingSchedule);
     }
