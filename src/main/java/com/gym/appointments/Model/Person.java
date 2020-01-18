@@ -5,8 +5,9 @@ import lombok.*;
 import javax.persistence.*;
 
 @MappedSuperclass
-@Setter
 @Getter
+@Setter
+
 public class Person {
 
     @NonNull

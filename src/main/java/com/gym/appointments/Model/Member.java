@@ -13,6 +13,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@RequiredArgsConstructor
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Member extends Person implements Serializable {
 
@@ -22,7 +23,7 @@ public class Member extends Person implements Serializable {
 
     //Date of Registration as member
     @NonNull
-    private LocalDate registrationDate = LocalDate.now();
+    private String registrationDate;
 
     /*@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "member")
     private List<Appointment> appointmentList;*/
